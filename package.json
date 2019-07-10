@@ -1,5 +1,5 @@
 {
-  "name": "pixel-grid",
+  "name": "@sergeyzwezdin/pixelgrid",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
