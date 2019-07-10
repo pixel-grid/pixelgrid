@@ -1,6 +1,6 @@
 {
   "name": "@sergeyzwezdin/pixelgrid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -10,6 +10,10 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open"
   },
   "author": "Sergey Zwezdin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixel-grid/pixelgrid.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.4",
