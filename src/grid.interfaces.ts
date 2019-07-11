@@ -34,6 +34,11 @@ export interface IGridBase {
      * Color of grid line
      */
     color: string;
+
+    /**
+     * Opacity of grid line (0 - 0%, 0.5 - 50%, 1 - 100%, etc)
+     */
+    opacity?: number;
 }
 
 /**

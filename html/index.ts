@@ -18,13 +18,15 @@ const defaultPreset: IPreset = {
     grids: [
         {
             type: 'grid',
-            color: '#00000055',
+            color: '#000000',
+            opacity: 0.2,
             size: 8
         } as IGrid,
 
         {
             type: 'rows-top',
-            color: '#aaaaaa49',
+            color: '#aaaaaa',
+            opacity: 0.4,
             gutter: 8,
             height: 8,
             offset: 8
@@ -36,7 +38,8 @@ const xlg1920Preset = {
     grids: [
         {
             type: 'columns-center',
-            color: '#aaaaaa49',
+            color: '#aaaaaa',
+            opacity: 0.3,
             count: 12,
             gutter: 32,
             width: 92
@@ -49,7 +52,8 @@ const lg1440Preset = {
     grids: [
         {
             type: 'columns-stretch',
-            color: '#aaaaaa49',
+            color: '#aaaaaa',
+            opacity: 0.3,
             count: 12,
             gutter: 32,
             margin: 32
@@ -62,7 +66,8 @@ const md1344Preset = {
     grids: [
         {
             type: 'columns-stretch',
-            color: '#aaaaaa49',
+            color: '#aaaaaa',
+            opacity: 0.3,
             count: 12,
             gutter: 16,
             margin: 16
@@ -75,7 +80,8 @@ const sm640Preset = {
     grids: [
         {
             type: 'columns-stretch',
-            color: '#aaaaaa49',
+            color: '#aaaaaa',
+            opacity: 0.3,
             count: 12,
             gutter: 8,
             margin: 16
@@ -88,7 +94,8 @@ const xs320Preset = {
     grids: [
         {
             type: 'columns-stretch',
-            color: '#aaaaaa49',
+            color: '#aaaaaa',
+            opacity: 0.3,
             count: 12,
             gutter: 8,
             margin: 8

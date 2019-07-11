@@ -1,3 +1,5 @@
+import 'core-js/features/array/find';
+
 import {
     IColumnsCenterGrid,
     IColumnsGrid,

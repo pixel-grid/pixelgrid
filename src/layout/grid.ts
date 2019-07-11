@@ -11,6 +11,10 @@ const grid: (root: HTMLElement, grid: IGrid) => void = (root, grid) => {
     container.style.left = '0';
     container.style.right = '0';
 
+    if (grid.opacity !== undefined) {
+        container.style.opacity = String(grid.opacity);
+    }
+
     const svg = `<svg width="${grid.size}" height="${
         grid.size
     }" xmlns="http://www.w3.org/2000/svg"><path stroke="${grid.color}" d="M${

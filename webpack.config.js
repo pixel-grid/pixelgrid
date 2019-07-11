@@ -27,6 +27,7 @@ module.exports = {
              */
             {
                 test: /\.ts$/,
+                exclude: /node_modules/,
                 include: [
                     path.resolve(__dirname, 'src'),
                     path.resolve(__dirname, 'html')

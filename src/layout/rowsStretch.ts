@@ -24,6 +24,7 @@ const rowsStretch: (root: HTMLElement, grid: IRowsStretchGrid) => void = (
         for (let i = 1; i <= grid.count; i++) {
             const column = createRowElement(
                 grid.color,
+                grid.opacity,
                 // skip gutter for last item
                 i !== grid.count ? grid.gutter : 0
             );
@@ -34,7 +35,11 @@ const rowsStretch: (root: HTMLElement, grid: IRowsStretchGrid) => void = (
     root.appendChild(container);
 };
 
-function createRowElement(color: string, marginBottom: number): HTMLElement {
+function createRowElement(
+    color: string,
+    opacity: number | undefined,
+    marginBottom: number
+): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
@@ -43,6 +48,10 @@ function createRowElement(color: string, marginBottom: number): HTMLElement {
     column.style.marginLeft = '0';
     column.style.flexGrow = '1';
     column.style.backgroundColor = color;
+
+    if (opacity !== undefined) {
+        column.style.opacity = String(opacity);
+    }
 
     return column;
 }

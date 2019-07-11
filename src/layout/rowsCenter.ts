@@ -33,6 +33,7 @@ const rowsCenter: (root: HTMLElement, grid: IRowsCenterGrid) => void = (
         const column = createRowElement(
             grid.height,
             grid.color,
+            grid.opacity,
             // skip gutter for last item
             i !== rowsCount ? grid.gutter : 0
         );
@@ -45,6 +46,7 @@ const rowsCenter: (root: HTMLElement, grid: IRowsCenterGrid) => void = (
 function createRowElement(
     height: number,
     color: string,
+    opacity: number | undefined,
     marginBottom: number
 ): HTMLElement {
     const column = document.createElement('div');
@@ -55,6 +57,10 @@ function createRowElement(
     column.style.marginLeft = '0';
     column.style.height = `${height}px`;
     column.style.backgroundColor = color;
+
+    if (opacity !== undefined) {
+        column.style.opacity = String(opacity);
+    }
 
     return column;
 }

@@ -33,6 +33,7 @@ const columnsLeft: (root: HTMLElement, grid: IColumnsLeftGrid) => void = (
         const column = createColumnElement(
             grid.width,
             grid.color,
+            grid.opacity,
             // skip gutter for last item
             i !== columnsCount ? grid.gutter : 0
         );
@@ -45,6 +46,7 @@ const columnsLeft: (root: HTMLElement, grid: IColumnsLeftGrid) => void = (
 function createColumnElement(
     width: number,
     color: string,
+    opacity: number | undefined,
     marginRight: number
 ): HTMLElement {
     const column = document.createElement('div');
@@ -55,6 +57,10 @@ function createColumnElement(
     column.style.marginLeft = '0';
     column.style.width = `${width}px`;
     column.style.backgroundColor = color;
+
+    if (opacity !== undefined) {
+        column.style.opacity = String(opacity);
+    }
 
     return column;
 }

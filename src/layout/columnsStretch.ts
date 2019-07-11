@@ -24,6 +24,7 @@ const columnsStretch: (root: HTMLElement, grid: IColumnsStretchGrid) => void = (
         for (let i = 1; i <= grid.count; i++) {
             const column = createColumnElement(
                 grid.color,
+                grid.opacity,
                 // skip gutter for last item
                 i !== grid.count ? grid.gutter : 0
             );
@@ -34,7 +35,11 @@ const columnsStretch: (root: HTMLElement, grid: IColumnsStretchGrid) => void = (
     root.appendChild(container);
 };
 
-function createColumnElement(color: string, marginRight: number): HTMLElement {
+function createColumnElement(
+    color: string,
+    opacity: number | undefined,
+    marginRight: number
+): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
@@ -43,6 +48,10 @@ function createColumnElement(color: string, marginRight: number): HTMLElement {
     column.style.marginLeft = '0';
     column.style.flexGrow = '1';
     column.style.backgroundColor = color;
+
+    if (opacity !== undefined) {
+        column.style.opacity = String(opacity);
+    }
 
     return column;
 }
