@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "core-js": "^3.1.4"
+  },
+  "resolutions": {
+    "lodash": "4.17.15"
   }
 }
