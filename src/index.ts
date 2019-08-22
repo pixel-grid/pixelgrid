@@ -1,13 +1,16 @@
 import 'core-js/features/array/find';
 
 import {
+    BuildLayoutOptions,
     IColumnsCenterGrid,
     IColumnsGrid,
     IColumnsLeftGrid,
+    IColumnsRightGrid,
     IColumnsStretchGrid,
     IGrid,
     IGridBase,
     IPreset,
+    IRowsBottomGrid,
     IRowsCenterGrid,
     IRowsGrid,
     IRowsStretchGrid,
@@ -33,9 +36,12 @@ function isGridColumnRowCountAuto(grid: IGridBase): boolean {
 }
 
 export function initializeGrid(
-    ...presets: IPreset[]
+    presets: IPreset[],
+    options: BuildLayoutOptions = {
+        zIndex: 10000
+    }
 ): { root: HTMLElement; resizeHandler: () => void } {
-    const grid = buildRootElement('pixelgrid');
+    const grid = buildRootElement('pixelgrid', options);
 
     // Run layout rebuild on every window resize in case if media query is defined or
     // row/column count is not defined (should be determined automatically).
@@ -56,14 +62,14 @@ export function initializeGrid(
     if (needtoRebuildOnWindowResize) {
         resizeHandler = subscribeWindowResize(() => {
             invalidateGridHeight(grid);
-            buildLayout(grid, presets);
+            buildLayout(grid, presets, options);
         });
     } else {
         resizeHandler = subscribeWindowResize(() => invalidateGridHeight(grid));
     }
 
     invalidateGridHeight(grid);
-    buildLayout(grid, presets);
+    buildLayout(grid, presets, options);
 
     return { resizeHandler, root: grid };
 }
@@ -87,6 +93,7 @@ export {
     IColumnsCenterGrid,
     IColumnsGrid,
     IColumnsLeftGrid,
+    IColumnsRightGrid,
     IColumnsStretchGrid,
     IGrid,
     IGridBase,
@@ -94,5 +101,6 @@ export {
     IRowsCenterGrid,
     IRowsGrid,
     IRowsStretchGrid,
+    IRowsBottomGrid,
     IRowsTopGrid
 };

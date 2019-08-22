@@ -1,6 +1,10 @@
-import { IGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IGrid } from '../grid.interfaces';
 
-const grid: (root: HTMLElement, grid: IGrid) => void = (root, grid) => {
+const grid: (
+    root: HTMLElement,
+    grid: IGrid,
+    options: BuildLayoutOptions
+) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'grid');

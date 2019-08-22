@@ -1,43 +1,43 @@
-import { BuildLayoutOptions, IColumnsCenterGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IRowsBottomGrid } from '../grid.interfaces';
 
-import getDocumentWidth from '../helpers/getDocumentWidth';
+import getDocumentHeight from '../helpers/getDocumentHeight';
 
-const columnsCenter: (
+const rowsBottom: (
     root: HTMLElement,
-    grid: IColumnsCenterGrid,
+    grid: IRowsBottomGrid,
     options: BuildLayoutOptions
 ) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
-    container.setAttribute('data-layout-type', 'columns-center');
+    container.setAttribute('data-layout-type', 'rows-top');
 
     container.style.position = 'absolute';
-    container.style.top = '0';
+    container.style.top = `${grid.offset}px`;
     container.style.bottom = '0';
     container.style.left = '0';
     container.style.right = '0';
 
     container.style.display = 'flex';
-    container.style.flexDirection = 'row';
+    container.style.flexDirection = 'column';
     container.style.flexWrap = 'nowrap';
-    container.style.justifyContent = 'center';
+    container.style.justifyContent = 'flex-end';
     container.style.alignItems = 'stretch';
 
-    const columnsCount =
+    const rowsCount =
         grid.count !== undefined
             ? grid.count
-            : Math.floor(getDocumentWidth() / (grid.width + grid.gutter));
+            : Math.floor(
+                  (getDocumentHeight() - grid.offset) /
+                      (grid.height + grid.gutter)
+              );
 
-    container.style.minWidth = `${grid.width * columnsCount +
-        grid.gutter * (columnsCount - 1)}px`;
-
-    for (let i = 1; i <= columnsCount; i++) {
-        const column = createColumnElement(
-            grid.width,
+    for (let i = 1; i <= rowsCount; i++) {
+        const column = createRowElement(
+            grid.height,
             grid.color,
             grid.opacity,
             // skip gutter for last item
-            i !== columnsCount ? grid.gutter : 0
+            i !== rowsCount ? grid.gutter : 0
         );
         container.appendChild(column);
     }
@@ -45,19 +45,19 @@ const columnsCenter: (
     root.appendChild(container);
 };
 
-function createColumnElement(
-    width: number,
+function createRowElement(
+    height: number,
     color: string,
     opacity: number | undefined,
-    marginRight: number
+    marginBottom: number
 ): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
-    column.style.marginRight = `${marginRight}px`;
-    column.style.marginBottom = '0';
+    column.style.marginRight = '0';
+    column.style.marginBottom = `${marginBottom}px`;
     column.style.marginLeft = '0';
-    column.style.width = `${width}px`;
+    column.style.height = `${height}px`;
     column.style.backgroundColor = color;
 
     if (opacity !== undefined) {
@@ -67,4 +67,4 @@ function createColumnElement(
     return column;
 }
 
-export default columnsCenter;
+export default rowsBottom;

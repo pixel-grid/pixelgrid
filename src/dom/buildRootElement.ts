@@ -1,8 +1,13 @@
+import { BuildLayoutOptions } from '../grid.interfaces';
+
 /**
  * Create empty div element and append it to the end of the body
  * @param id Element's identifier
  */
-const buildRootElement: (id: string) => HTMLElement = (id) => {
+const buildRootElement: (
+    id: string,
+    options: BuildLayoutOptions
+) => HTMLElement = (id, options) => {
     const result = document.createElement('div');
 
     result.id = id;
@@ -12,6 +17,10 @@ const buildRootElement: (id: string) => HTMLElement = (id) => {
     result.style.right = '0';
     result.style.pointerEvents = 'none';
     result.style.overflow = 'hidden';
+
+    if (options.zIndex !== undefined) {
+        result.style.zIndex = `${options.zIndex}`;
+    }
 
     document.body.appendChild(result);
 

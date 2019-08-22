@@ -1,10 +1,12 @@
-import { IRowsCenterGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IRowsCenterGrid } from '../grid.interfaces';
+
 import getDocumentHeight from '../helpers/getDocumentHeight';
 
-const rowsCenter: (root: HTMLElement, grid: IRowsCenterGrid) => void = (
-    root,
-    grid
-) => {
+const rowsCenter: (
+    root: HTMLElement,
+    grid: IRowsCenterGrid,
+    options: BuildLayoutOptions
+) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'rows-center');

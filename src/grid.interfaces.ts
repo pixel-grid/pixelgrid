@@ -1,4 +1,11 @@
 /**
+ * Additional options to build layout
+ */
+export type BuildLayoutOptions = {
+    zIndex?: number;
+};
+
+/**
  * Preset that defines grids to be displayed for specific media query
  */
 export interface IPreset {
@@ -26,9 +33,11 @@ export interface IGridBase {
         | 'columns-stretch'
         | 'columns-center'
         | 'columns-left'
+        | 'columns-right'
         | 'rows-stretch'
         | 'rows-center'
-        | 'rows-top';
+        | 'rows-top'
+        | 'rows-bottom';
 
     /**
      * Color of grid line
@@ -102,6 +111,21 @@ export interface IColumnsLeftGrid extends IColumnsGrid {
 }
 
 /**
+ * Right oriented columns grid
+ */
+export interface IColumnsRightGrid extends IColumnsGrid {
+    /**
+     * Width of column in pixels
+     */
+    width: number;
+
+    /**
+     * Offset from right in pixles
+     */
+    offset: number;
+}
+
+/**
  * Rows based grid
  */
 export interface IRowsGrid extends IGridBase {
@@ -137,7 +161,7 @@ export interface IRowsCenterGrid extends IRowsGrid {
 }
 
 /**
- * Left oriented rows grid
+ * Top oriented rows grid
  */
 export interface IRowsTopGrid extends IRowsGrid {
     /**
@@ -147,6 +171,21 @@ export interface IRowsTopGrid extends IRowsGrid {
 
     /**
      * Offset from top in pixels
+     */
+    offset: number;
+}
+
+/**
+ * Bottom oriented rows grid
+ */
+export interface IRowsBottomGrid extends IRowsGrid {
+    /**
+     * Height of row in pixels
+     */
+    height: number;
+
+    /**
+     * Offset from bottom in pixels
      */
     offset: number;
 }

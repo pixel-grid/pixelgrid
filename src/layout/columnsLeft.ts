@@ -1,10 +1,12 @@
-import { IColumnsLeftGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IColumnsLeftGrid } from '../grid.interfaces';
+
 import getDocumentWidth from '../helpers/getDocumentWidth';
 
-const columnsLeft: (root: HTMLElement, grid: IColumnsLeftGrid) => void = (
-    root,
-    grid
-) => {
+const columnsLeft: (
+    root: HTMLElement,
+    grid: IColumnsLeftGrid,
+    options: BuildLayoutOptions
+) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'columns-left');

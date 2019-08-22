@@ -2,10 +2,12 @@ import {
     IColumnsCenterGrid,
     IColumnsGrid,
     IColumnsLeftGrid,
+    IColumnsRightGrid,
     IColumnsStretchGrid,
     IGrid,
     IGridBase,
     IPreset,
+    IRowsBottomGrid,
     IRowsCenterGrid,
     IRowsGrid,
     IRowsStretchGrid,
@@ -104,14 +106,14 @@ const xs320Preset = {
     mediaQuery: '(max-width: 19.99rem)'
 };
 
-const token = initializeGrid(
+const token = initializeGrid([
     defaultPreset,
     xlg1920Preset,
     lg1440Preset,
     md1344Preset,
     sm640Preset,
     xs320Preset
-);
+]);
 
 const removegridButton = document.getElementById('removegrid');
 if (removegridButton) {

@@ -1,10 +1,12 @@
-import { IRowsTopGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IRowsTopGrid } from '../grid.interfaces';
+
 import getDocumentHeight from '../helpers/getDocumentHeight';
 
-const rowsTop: (root: HTMLElement, grid: IRowsTopGrid) => void = (
-    root,
-    grid
-) => {
+const rowsTop: (
+    root: HTMLElement,
+    grid: IRowsTopGrid,
+    options: BuildLayoutOptions
+) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'rows-top');

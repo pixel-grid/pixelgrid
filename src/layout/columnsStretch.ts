@@ -1,9 +1,10 @@
-import { IColumnsStretchGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IColumnsStretchGrid } from '../grid.interfaces';
 
-const columnsStretch: (root: HTMLElement, grid: IColumnsStretchGrid) => void = (
-    root,
-    grid
-) => {
+const columnsStretch: (
+    root: HTMLElement,
+    grid: IColumnsStretchGrid,
+    options: BuildLayoutOptions
+) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'columns-stretch');

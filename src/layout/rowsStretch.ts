@@ -1,9 +1,10 @@
-import { IRowsStretchGrid } from '../grid.interfaces';
+import { BuildLayoutOptions, IRowsStretchGrid } from '../grid.interfaces';
 
-const rowsStretch: (root: HTMLElement, grid: IRowsStretchGrid) => void = (
-    root,
-    grid
-) => {
+const rowsStretch: (
+    root: HTMLElement,
+    grid: IRowsStretchGrid,
+    options: BuildLayoutOptions
+) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'rows-stretch');
