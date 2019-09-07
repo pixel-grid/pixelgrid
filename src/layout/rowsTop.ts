@@ -31,7 +31,7 @@ const rowsTop: (
                       (grid.height + grid.gutter)
               );
 
-    for (let i = 1; i <= rowsCount; i++) {
+    for (let i = 1; i <= rowsCount; i = i + 1) {
         const column = createRowElement(
             grid.height,
             grid.color,

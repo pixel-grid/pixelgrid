@@ -8,7 +8,7 @@ const subscribeWindowResize: (onResize: () => void) => () => void = (
             return;
         }
         running = true;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(() => {
             onResize();
             running = false;
         });

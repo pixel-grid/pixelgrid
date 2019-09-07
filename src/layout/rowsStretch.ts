@@ -22,7 +22,7 @@ const rowsStretch: (
     container.style.alignItems = 'stretch';
 
     if (grid.count !== undefined) {
-        for (let i = 1; i <= grid.count; i++) {
+        for (let i = 1; i <= grid.count; i = i + 1) {
             const column = createRowElement(
                 grid.color,
                 grid.opacity,

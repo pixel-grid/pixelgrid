@@ -31,7 +31,7 @@ const columnsLeft: (
                       (grid.width + grid.gutter)
               );
 
-    for (let i = 1; i <= columnsCount; i++) {
+    for (let i = 1; i <= columnsCount; i = i + 1) {
         const column = createColumnElement(
             grid.width,
             grid.color,

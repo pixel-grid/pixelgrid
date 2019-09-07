@@ -14,7 +14,7 @@ describe('invalidateGridHeight', () => {
         expect(result).toEqual(sourceElement);
     });
 
-    test("invalidates element's height", () => {
+    test(`invalidates element's height`, () => {
         const sourceElement = document.createElement('div');
 
         invalidateGridHeight(sourceElement);
@@ -22,7 +22,7 @@ describe('invalidateGridHeight', () => {
         expect(sourceElement).toMatchSnapshot();
     });
 
-    test("invalidates element's height for grid larger than document", () => {
+    test(`invalidates element's height for grid larger than document`, () => {
         const sourceElement = document.createElement('div');
         sourceElement.style.height = '100000px';
 

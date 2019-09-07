@@ -1,18 +1,20 @@
 {
     "extends": ["tslint-config-airbnb"],
     "rules": {
-        "align": [false],
+        "align": false,
         "comment-format": false,
-        "indent": [true, "spaces", 4],
-        "max-line-length": [true, {"limit": 80, "ignore-pattern": "^import |^export {(.*?)}"}],
+        "indent": false,
+        "ter-indent": false,
+        "max-line-length": false,
         "trailing-comma": { "options": { "singleline": "never", "multiline": "never" }},
         "no-trailing-whitespace": true,
         "no-unused-expression": true,
         "no-var-keyword": true,
-        "quotemark": [true, "single"],
+        "quotemark": [true, "single", "jsx-double"],
         "semicolon": [true, "always"],
         "space-before-function-paren": [true, "never"],
         "strict-boolean-expressions": false,
+        "ter-arrow-parens": false,
         "arrow-parens": false,
         "triple-equals": true,
         "variable-name": [
@@ -22,7 +24,7 @@
             "allow-leading-underscore",
             "allow-pascal-case"
         ],
-        "no-boolean-literal-compare": true,
+        "no-boolean-literal-compare": false,
         "whitespace": [
             false,
             "check-branch",
@@ -31,6 +33,9 @@
             "check-operator",
             "check-separator",
             "check-type"
-        ]
+        ],
+        "import-name": false,
+        "no-else-after-return": false,
+        "ter-func-call-spacing": false
     }
 }

@@ -8,7 +8,8 @@
     "build": "tsc",
     "prepublish": "tsc",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tslint -c ./tslint.json './src/**/*.ts*'"
   },
   "author": "Sergey Zwezdin",
   "repository": {
@@ -23,6 +24,7 @@
     "jest": "^24.9.0",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
+    "tslint": "^5.19.0",
     "tslint-config-airbnb": "^5.11.1",
     "typescript": "^3.5.2",
     "webpack": "^4.30.0",

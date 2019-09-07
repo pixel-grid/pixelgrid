@@ -31,7 +31,7 @@ const rowsCenter: (
     container.style.minHeight = `${grid.height * rowsCount +
         grid.gutter * (rowsCount - 1)}px`;
 
-    for (let i = 1; i <= rowsCount; i++) {
+    for (let i = 1; i <= rowsCount; i = i + 1) {
         const column = createRowElement(
             grid.height,
             grid.color,
