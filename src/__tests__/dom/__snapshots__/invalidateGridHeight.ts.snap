@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`invalidateGridHeight invalidates element's height 1`] = `
+<div
+  style="display: block; height: 500px;"
+/>
+`;
+
+exports[`invalidateGridHeight invalidates element's height for grid larger than document 1`] = `
+<div
+  style="height: 500px; display: block;"
+/>
+`;

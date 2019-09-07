@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buildRootElement builds empty root element 1`] = `
+<div
+  id="pixelgrid"
+  style="position: absolute; top: 0px; left: 0px; right: 0px; pointer-events: none; overflow: hidden;"
+/>
+`;
+
+exports[`buildRootElement builds root element with custom zIndex 1`] = `
+<div
+  id="pixelgrid"
+  style="position: absolute; top: 0px; left: 0px; right: 0px; pointer-events: none; overflow: hidden; z-index: 123456;"
+/>
+`;
