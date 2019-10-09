@@ -1,6 +1,6 @@
 <a href="https://pixelgrid.zwezdin.com"><img src="media/logo.svg" title="PixelGrid" alt="PixelGrid" /></a>
 
-<a href="https://pixelgrid.zwezdin.com">pixelgrid.zwezdin.com</a>
+Official website: <a href="https://pixelgrid.zwezdin.com">https://pixelgrid.zwezdin.com</a>
 
 
 [![Build Status](https://travis-ci.org/pixel-grid/pixelgrid.svg?branch=master)](https://travis-ci.org/pixel-grid/pixelgrid)
