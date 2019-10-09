@@ -1,5 +1,5 @@
-<img src="media/logo.svg" title="PixelGrid" alt="PixelGrid" />
--
+<a href="https://pixelgrid.zwezdin.com"><img src="media/logo.svg" title="PixelGrid" alt="PixelGrid" /></a>
+
 
 [![Build Status](https://travis-ci.org/pixel-grid/pixelgrid.svg?branch=master)](https://travis-ci.org/pixel-grid/pixelgrid)
 [![NPM](https://img.shields.io/npm/dy/@sergeyzwezdin/pixelgrid?label=NPM%20downloads&logo=npm)](https://www.npmjs.com/package/@sergeyzwezdin/pixelgrid)
