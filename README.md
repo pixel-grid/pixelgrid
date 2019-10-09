@@ -26,7 +26,7 @@ It could be useful for cases when you don't want to install the browser extensio
 
 2. Add layout grid to your website
 
-```bash
+```javascript
 import { initializeGrid } from ‘@sergeyzwezdin/pixelgrid’;
 
 const presets = [{
