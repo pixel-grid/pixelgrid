@@ -19,6 +19,7 @@ import {
 
 import buildLayout from './buildLayout';
 import buildRootElement from './dom/buildRootElement';
+import defaultPreset from './defaultPreset';
 import invalidateGridHeight from './dom/invalidateGridHeight';
 import subscribeWindowResize from './events/subscribeWindowResize';
 import unsubscribeWindowResize from './events/unsubscribeWindowResize';
@@ -50,12 +51,7 @@ export function initializeGrid(
         presets.find(
             (preset) =>
                 preset.mediaQuery !== undefined ||
-                (preset.grids &&
-                    preset.grids.find(
-                        (grid) =>
-                            grid.type !== 'grid' &&
-                            isGridColumnRowCountAuto(grid)
-                    )) !== undefined
+                (preset.grids && preset.grids.find((grid) => grid.type !== 'grid' && isGridColumnRowCountAuto(grid))) !== undefined
         ) !== undefined;
 
     let resizeHandler: (() => void) | undefined = undefined;
@@ -74,10 +70,7 @@ export function initializeGrid(
     return { resizeHandler, root: grid };
 }
 
-export function destroyGrid(grid: {
-    root: HTMLElement;
-    resizeHandler: () => void;
-}): void {
+export function destroyGrid(grid: { root: HTMLElement; resizeHandler: () => void }): void {
     if (grid) {
         if (grid.root && grid.root.parentElement) {
             grid.root.parentElement.removeChild(grid.root);
@@ -102,5 +95,6 @@ export {
     IRowsGrid,
     IRowsStretchGrid,
     IRowsBottomGrid,
-    IRowsTopGrid
+    IRowsTopGrid,
+    defaultPreset
 };

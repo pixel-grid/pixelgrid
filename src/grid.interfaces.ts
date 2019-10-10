@@ -2,7 +2,19 @@
  * Additional options to build layout
  */
 export type BuildLayoutOptions = {
+    /**
+     * zIndex of grid container
+     */
     zIndex?: number;
+    /**
+     * Whether need to use REM units instead of PX
+     */
+    useRem?: boolean;
+    /**
+     * If use REM, defines base root value of font-size.
+     * If not specified, will be calculated automatically based on document.body element.
+     */
+    remRootValue?: number;
 };
 
 /**

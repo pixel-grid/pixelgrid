@@ -1,12 +1,9 @@
 import { BuildLayoutOptions, IRowsCenterGrid } from '../grid.interfaces';
 
+import adjustUnit from '../helpers/adjustUnit';
 import getDocumentHeight from '../helpers/getDocumentHeight';
 
-const rowsCenter: (
-    root: HTMLElement,
-    grid: IRowsCenterGrid,
-    options: BuildLayoutOptions
-) => void = (root, grid, options) => {
+const rowsCenter: (root: HTMLElement, grid: IRowsCenterGrid, options: BuildLayoutOptions) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'rows-center');
@@ -23,13 +20,9 @@ const rowsCenter: (
     container.style.justifyContent = 'center';
     container.style.alignItems = 'stretch';
 
-    const rowsCount =
-        grid.count !== undefined
-            ? grid.count
-            : Math.floor(getDocumentHeight() / (grid.height + grid.gutter));
+    const rowsCount = grid.count !== undefined ? grid.count : Math.floor(getDocumentHeight() / (grid.height + grid.gutter));
 
-    container.style.minHeight = `${grid.height * rowsCount +
-        grid.gutter * (rowsCount - 1)}px`;
+    container.style.minHeight = adjustUnit(grid.height * rowsCount + grid.gutter * (rowsCount - 1), options.useRem, options.remRootValue);
 
     for (let i = 1; i <= rowsCount; i = i + 1) {
         const column = createRowElement(
@@ -37,7 +30,8 @@ const rowsCenter: (
             grid.color,
             grid.opacity,
             // skip gutter for last item
-            i !== rowsCount ? grid.gutter : 0
+            i !== rowsCount ? grid.gutter : 0,
+            options
         );
         container.appendChild(column);
     }
@@ -49,15 +43,16 @@ function createRowElement(
     height: number,
     color: string,
     opacity: number | undefined,
-    marginBottom: number
+    marginBottom: number,
+    options: BuildLayoutOptions
 ): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
     column.style.marginRight = '0';
-    column.style.marginBottom = `${marginBottom}px`;
+    column.style.marginBottom = adjustUnit(marginBottom, options.useRem, options.remRootValue);
     column.style.marginLeft = '0';
-    column.style.height = `${height}px`;
+    column.style.height = adjustUnit(height, options.useRem, options.remRootValue);
     column.style.backgroundColor = color;
 
     if (opacity !== undefined) {

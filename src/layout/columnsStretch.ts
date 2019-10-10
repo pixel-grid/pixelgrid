@@ -1,10 +1,8 @@
 import { BuildLayoutOptions, IColumnsStretchGrid } from '../grid.interfaces';
 
-const columnsStretch: (
-    root: HTMLElement,
-    grid: IColumnsStretchGrid,
-    options: BuildLayoutOptions
-) => void = (root, grid, options) => {
+import adjustUnit from '../helpers/adjustUnit';
+
+const columnsStretch: (root: HTMLElement, grid: IColumnsStretchGrid, options: BuildLayoutOptions) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'columns-stretch');
@@ -12,8 +10,8 @@ const columnsStretch: (
     container.style.position = 'absolute';
     container.style.top = '0';
     container.style.bottom = '0';
-    container.style.left = `${grid.margin}px`;
-    container.style.right = `${grid.margin}px`;
+    container.style.left = adjustUnit(grid.margin, options.useRem, options.remRootValue);
+    container.style.right = adjustUnit(grid.margin, options.useRem, options.remRootValue);
 
     container.style.display = 'flex';
     container.style.flexDirection = 'row';
@@ -27,7 +25,8 @@ const columnsStretch: (
                 grid.color,
                 grid.opacity,
                 // skip gutter for last item
-                i !== grid.count ? grid.gutter : 0
+                i !== grid.count ? grid.gutter : 0,
+                options
             );
             container.appendChild(column);
         }
@@ -36,15 +35,11 @@ const columnsStretch: (
     root.appendChild(container);
 };
 
-function createColumnElement(
-    color: string,
-    opacity: number | undefined,
-    marginRight: number
-): HTMLElement {
+function createColumnElement(color: string, opacity: number | undefined, marginRight: number, options: BuildLayoutOptions): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
-    column.style.marginRight = `${marginRight}px`;
+    column.style.marginRight = adjustUnit(marginRight, options.useRem, options.remRootValue);
     column.style.marginBottom = '0';
     column.style.marginLeft = '0';
     column.style.flexGrow = '1';

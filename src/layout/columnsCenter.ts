@@ -1,12 +1,9 @@
 import { BuildLayoutOptions, IColumnsCenterGrid } from '../grid.interfaces';
 
+import adjustUnit from '../helpers/adjustUnit';
 import getDocumentWidth from '../helpers/getDocumentWidth';
 
-const columnsCenter: (
-    root: HTMLElement,
-    grid: IColumnsCenterGrid,
-    options: BuildLayoutOptions
-) => void = (root, grid, options) => {
+const columnsCenter: (root: HTMLElement, grid: IColumnsCenterGrid, options: BuildLayoutOptions) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'columns-center');
@@ -23,13 +20,13 @@ const columnsCenter: (
     container.style.justifyContent = 'center';
     container.style.alignItems = 'stretch';
 
-    const columnsCount =
-        grid.count !== undefined
-            ? grid.count
-            : Math.floor(getDocumentWidth() / (grid.width + grid.gutter));
+    const columnsCount = grid.count !== undefined ? grid.count : Math.floor(getDocumentWidth() / (grid.width + grid.gutter));
 
-    container.style.minWidth = `${grid.width * columnsCount +
-        grid.gutter * (columnsCount - 1)}px`;
+    container.style.minWidth = adjustUnit(
+        grid.width * columnsCount + grid.gutter * (columnsCount - 1),
+        options.useRem,
+        options.remRootValue
+    );
 
     for (let i = 1; i <= columnsCount; i = i + 1) {
         const column = createColumnElement(
@@ -37,7 +34,8 @@ const columnsCenter: (
             grid.color,
             grid.opacity,
             // skip gutter for last item
-            i !== columnsCount ? grid.gutter : 0
+            i !== columnsCount ? grid.gutter : 0,
+            options
         );
         container.appendChild(column);
     }
@@ -49,15 +47,16 @@ function createColumnElement(
     width: number,
     color: string,
     opacity: number | undefined,
-    marginRight: number
+    marginRight: number,
+    options: BuildLayoutOptions
 ): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
-    column.style.marginRight = `${marginRight}px`;
+    column.style.marginRight = adjustUnit(marginRight, options.useRem, options.remRootValue);
     column.style.marginBottom = '0';
     column.style.marginLeft = '0';
-    column.style.width = `${width}px`;
+    column.style.width = adjustUnit(width, options.useRem, options.remRootValue);
     column.style.backgroundColor = color;
 
     if (opacity !== undefined) {

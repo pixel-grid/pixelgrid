@@ -1,17 +1,15 @@
 import { BuildLayoutOptions, IRowsStretchGrid } from '../grid.interfaces';
 
-const rowsStretch: (
-    root: HTMLElement,
-    grid: IRowsStretchGrid,
-    options: BuildLayoutOptions
-) => void = (root, grid, options) => {
+import adjustUnit from '../helpers/adjustUnit';
+
+const rowsStretch: (root: HTMLElement, grid: IRowsStretchGrid, options: BuildLayoutOptions) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'rows-stretch');
 
     container.style.position = 'absolute';
-    container.style.top = `${grid.margin}px`;
-    container.style.bottom = `${grid.margin}px`;
+    container.style.top = adjustUnit(grid.margin, options.useRem, options.remRootValue);
+    container.style.bottom = adjustUnit(grid.margin, options.useRem, options.remRootValue);
     container.style.left = '0';
     container.style.right = '0';
 
@@ -27,7 +25,8 @@ const rowsStretch: (
                 grid.color,
                 grid.opacity,
                 // skip gutter for last item
-                i !== grid.count ? grid.gutter : 0
+                i !== grid.count ? grid.gutter : 0,
+                options
             );
             container.appendChild(column);
         }
@@ -36,16 +35,12 @@ const rowsStretch: (
     root.appendChild(container);
 };
 
-function createRowElement(
-    color: string,
-    opacity: number | undefined,
-    marginBottom: number
-): HTMLElement {
+function createRowElement(color: string, opacity: number | undefined, marginBottom: number, options: BuildLayoutOptions): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
     column.style.marginRight = '0';
-    column.style.marginBottom = `${marginBottom}px`;
+    column.style.marginBottom = adjustUnit(marginBottom, options.useRem, options.remRootValue);
     column.style.marginLeft = '0';
     column.style.flexGrow = '1';
     column.style.backgroundColor = color;

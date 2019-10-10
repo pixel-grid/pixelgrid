@@ -1,12 +1,9 @@
 import { BuildLayoutOptions, IColumnsLeftGrid } from '../grid.interfaces';
 
+import adjustUnit from '../helpers/adjustUnit';
 import getDocumentWidth from '../helpers/getDocumentWidth';
 
-const columnsLeft: (
-    root: HTMLElement,
-    grid: IColumnsLeftGrid,
-    options: BuildLayoutOptions
-) => void = (root, grid, options) => {
+const columnsLeft: (root: HTMLElement, grid: IColumnsLeftGrid, options: BuildLayoutOptions) => void = (root, grid, options) => {
     const container = document.createElement('div');
 
     container.setAttribute('data-layout-type', 'columns-left');
@@ -14,7 +11,7 @@ const columnsLeft: (
     container.style.position = 'absolute';
     container.style.top = '0';
     container.style.bottom = '0';
-    container.style.left = `${grid.offset}px`;
+    container.style.left = adjustUnit(grid.offset, options.useRem, options.remRootValue);
     container.style.right = '0';
 
     container.style.display = 'flex';
@@ -24,12 +21,7 @@ const columnsLeft: (
     container.style.alignItems = 'stretch';
 
     const columnsCount =
-        grid.count !== undefined
-            ? grid.count
-            : Math.floor(
-                  (getDocumentWidth() - grid.offset) /
-                      (grid.width + grid.gutter)
-              );
+        grid.count !== undefined ? grid.count : Math.floor((getDocumentWidth() - grid.offset) / (grid.width + grid.gutter));
 
     for (let i = 1; i <= columnsCount; i = i + 1) {
         const column = createColumnElement(
@@ -37,7 +29,8 @@ const columnsLeft: (
             grid.color,
             grid.opacity,
             // skip gutter for last item
-            i !== columnsCount ? grid.gutter : 0
+            i !== columnsCount ? grid.gutter : 0,
+            options
         );
         container.appendChild(column);
     }
@@ -49,15 +42,16 @@ function createColumnElement(
     width: number,
     color: string,
     opacity: number | undefined,
-    marginRight: number
+    marginRight: number,
+    options: BuildLayoutOptions
 ): HTMLElement {
     const column = document.createElement('div');
 
     column.style.marginTop = '0';
-    column.style.marginRight = `${marginRight}px`;
+    column.style.marginRight = adjustUnit(marginRight, options.useRem, options.remRootValue);
     column.style.marginBottom = '0';
     column.style.marginLeft = '0';
-    column.style.width = `${width}px`;
+    column.style.width = adjustUnit(width, options.useRem, options.remRootValue);
     column.style.backgroundColor = color;
 
     if (opacity !== undefined) {

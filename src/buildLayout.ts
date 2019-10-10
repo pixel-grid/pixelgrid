@@ -22,11 +22,7 @@ import rowsCenter from './layout/rowsCenter';
 import rowsStretch from './layout/rowsStretch';
 import rowsTop from './layout/rowsTop';
 
-const buildLayout: (
-    root: HTMLElement,
-    presets: IPreset[],
-    options: BuildLayoutOptions
-) => void = (root, presets, options) => {
+const buildLayout: (root: HTMLElement, presets: IPreset[], options: BuildLayoutOptions) => void = (root, presets, options) => {
     if (root) {
         // Cleanup root element
         while (root.firstChild) {
@@ -36,26 +32,15 @@ const buildLayout: (
         // Build grid layouts
         if (presets) {
             for (const preset of presets.filter(
-                (p) =>
-                    p.grids &&
-                    p.grids.length > 0 &&
-                    (!p.mediaQuery || window.matchMedia(p.mediaQuery).matches)
+                (p) => p.grids && p.grids.length > 0 && (!p.mediaQuery || window.matchMedia(p.mediaQuery).matches)
             )) {
                 for (const grid of preset.grids) {
                     if (grid.type === 'grid') {
                         gridLayout(root, grid as IGrid, options);
                     } else if (grid.type === 'columns-center') {
-                        columnsCenter(
-                            root,
-                            grid as IColumnsCenterGrid,
-                            options
-                        );
+                        columnsCenter(root, grid as IColumnsCenterGrid, options);
                     } else if (grid.type === 'columns-stretch') {
-                        columnsStretch(
-                            root,
-                            grid as IColumnsStretchGrid,
-                            options
-                        );
+                        columnsStretch(root, grid as IColumnsStretchGrid, options);
                     } else if (grid.type === 'columns-left') {
                         columnsLeft(root, grid as IColumnsLeftGrid, options);
                     } else if (grid.type === 'columns-right') {
@@ -70,9 +55,7 @@ const buildLayout: (
                         rowsBottom(root, grid as IRowsBottomGrid, options);
                     } else {
                         if (grid.type) {
-                            console.warn(
-                                `Unknown grid layout type "${grid.type}"`
-                            );
+                            console.warn(`Unknown grid layout type "${grid.type}"`);
                         } else {
                             console.warn(`Grid type is not defined`);
                         }

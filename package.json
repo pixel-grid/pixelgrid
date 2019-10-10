@@ -1,6 +1,6 @@
 {
   "name": "@sergeyzwezdin/pixelgrid",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -36,5 +36,21 @@
   },
   "resolutions": {
     "lodash": "4.17.15"
-  }
+  },
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/grid.interfaces.js",
+    "dist/grid.interfaces.d.ts",
+    "dist/buildLayout.js",
+    "dist/buildLayout.d.ts",
+    "dist/dom/*.js",
+    "dist/dom/*.d.ts",
+    "dist/events/*.js",
+    "dist/events/*.d.ts",
+    "dist/helpers/*.js",
+    "dist/helpers/*.d.ts",
+    "dist/layout/*.js",
+    "dist/layout/*.d.ts"
+  ]
 }
