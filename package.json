@@ -1,6 +1,6 @@
 {
   "name": "@sergeyzwezdin/pixelgrid",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -8,7 +8,6 @@
     "build": "tsc",
     "prepublish": "tsc",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
-    "test": "jest",
     "lint": "tslint -c ./tslint.json './src/**/*.ts*'"
   },
   "author": "Sergey Zwezdin",
@@ -44,6 +43,8 @@
     "dist/grid.interfaces.d.ts",
     "dist/buildLayout.js",
     "dist/buildLayout.d.ts",
+    "dist/defaultPreset.js",
+    "dist/defaultPreset.d.ts",
     "dist/dom/*.js",
     "dist/dom/*.d.ts",
     "dist/events/*.js",
