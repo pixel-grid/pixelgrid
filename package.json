@@ -8,6 +8,7 @@
     "build": "tsc",
     "prepublish": "tsc",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "test": "jest",
     "lint": "tslint -c ./tslint.json './src/**/*.ts*'"
   },
   "author": "Sergey Zwezdin",
