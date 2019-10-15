@@ -11,8 +11,8 @@ const columnsRight: (root: HTMLElement, grid: IColumnsRightGrid, options: BuildL
     container.style.position = 'absolute';
     container.style.top = '0';
     container.style.bottom = '0';
-    container.style.left = adjustUnit(grid.offset, options.useRem, options.remRootValue);
-    container.style.right = '0';
+    container.style.left = '0';
+    container.style.right = adjustUnit(grid.offset, options.useRem, options.remRootValue);
 
     container.style.display = 'flex';
     container.style.flexDirection = 'row';

@@ -1,21 +1,4 @@
-import {
-    IColumnsCenterGrid,
-    IColumnsGrid,
-    IColumnsLeftGrid,
-    IColumnsRightGrid,
-    IColumnsStretchGrid,
-    IGrid,
-    IGridBase,
-    IPreset,
-    IRowsBottomGrid,
-    IRowsCenterGrid,
-    IRowsGrid,
-    IRowsStretchGrid,
-    IRowsTopGrid,
-    defaultPreset,
-    destroyGrid,
-    initializeGrid
-} from '../src/index';
+import { defaultPreset, destroyGrid, initializeGrid } from '../src/index';
 
 const items = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porta, est ac tempor auctor, velit sem interdum quam, sit amet dictum purus est sed nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce at ullamcorper urna. Nam imperdiet nunc at diam placerat, eget malesuada nisi commodo. Donec suscipit ut dui eu finibus. Aliquam erat volutpat. Vestibulum nec nibh vel felis fermentum ultrices. Mauris vel mauris ac diam congue facilisis auctor quis nisi. In hac habitasse platea dictumst. Curabitur semper tortor ut sollicitudin hendrerit. Quisque vel posuere ex, a vehicula mauris. Fusce risus urna, hendrerit at consequat ac, accumsan eget dui. Nulla vulputate mattis tellus lobortis euismod. Maecenas enim arcu, lacinia non pellentesque sed, tristique eget risus. Maecenas porttitor viverra iaculis. Donec aliquet felis velit, commodo luctus velit venenatis quis.',
@@ -33,9 +16,11 @@ Array.from({ length: 20 }).forEach(() => {
     });
 });
 
-const token = initializeGrid(defaultPreset, { useRem: true });
+let token: { root: HTMLElement; resizeHandler: () => void };
 
 const removegridButton = document.createElement('button');
 removegridButton.innerText = 'Remove grid';
 removegridButton.addEventListener('click', () => destroyGrid(token));
 document.body.appendChild(removegridButton);
+
+token = initializeGrid(defaultPreset, { useRem: true });

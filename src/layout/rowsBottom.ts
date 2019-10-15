@@ -9,8 +9,8 @@ const rowsBottom: (root: HTMLElement, grid: IRowsBottomGrid, options: BuildLayou
     container.setAttribute('data-layout-type', 'rows-top');
 
     container.style.position = 'absolute';
-    container.style.top = adjustUnit(grid.offset, options.useRem, options.remRootValue);
-    container.style.bottom = '0';
+    container.style.top = '0';
+    container.style.bottom = adjustUnit(grid.offset, options.useRem, options.remRootValue);
     container.style.left = '0';
     container.style.right = '0';
 
