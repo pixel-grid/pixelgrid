@@ -1,4 +1,4 @@
-<a href="https://pixelgrid.zwezdin.com"><img src="media/logo.svg" title="PixelGrid" alt="PixelGrid" /></a>
+<a href="https://pixelgrid.zwezdin.com"><img src="https://raw.githubusercontent.com/pixel-grid/pixelgrid/master/media/logo.svg?sanitize=true" title="PixelGrid" alt="PixelGrid" /></a>
 
 Official website: <a href="https://pixelgrid.zwezdin.com">https://pixelgrid.zwezdin.com</a>
 
@@ -8,7 +8,7 @@ Official website: <a href="https://pixelgrid.zwezdin.com">https://pixelgrid.zwez
 
 The tool to overlap your website layout with a grid. It’s available for the most popular browser and as an npm package.
 
-<img src="media/demo.gif" />
+<img src="https://raw.githubusercontent.com/pixel-grid/pixelgrid/master/media/demo.gif" />
 
 ## Usage
 
