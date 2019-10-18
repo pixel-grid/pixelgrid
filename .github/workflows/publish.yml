@@ -16,6 +16,9 @@ jobs:
     - name: Check version changes
       uses: EndBug/version-check@v1.0.0
       id: check
+      with:
+        file-name: package.json
+        diff-search: true
     - name: Version update detected
       run: 'echo "Version change! -> ${{ steps.check }}"'
     - name: Use Node.js ${{ matrix.node-version }}
