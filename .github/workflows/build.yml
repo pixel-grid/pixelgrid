@@ -1,4 +1,4 @@
-name: Build and test
+name: Build, test and publish
 
 on: [push]
 
@@ -33,3 +33,10 @@ jobs:
       run: yarn test --coverage
       env:
         CI: true
+    - name: Publish on NPM
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+        npm run publish
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
