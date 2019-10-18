@@ -12,36 +12,43 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Check version changes
+      uses: EndBug/version-check@v1.0.0
+      id: versioncheck
     - name: Use Node.js ${{ matrix.node-version }}
+      if: steps.versioncheck.outputs.changed == 'true'
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
+      if: steps.versioncheck.outputs.changed == 'true'
       run: yarn install
       env:
         CI: true
     - name: Lint
+      if: steps.versioncheck.outputs.changed == 'true'
       run: yarn lint
       env:
         CI: true
     - name: Build
+      if: steps.versioncheck.outputs.changed == 'true'
       run: yarn build
       env:
         CI: true
     - name: Run tests
+      if: steps.versioncheck.outputs.changed == 'true'
       run: yarn test --coverage
       env:
         CI: true
-    - uses: actions/upload-artifact@master
+    - name: Upload artifacts
+      if: steps.versioncheck.outputs.changed == 'true'
+      uses: actions/upload-artifact@master
       with:
         name: package
         path: dist/
-    - name: Check version changes
-      uses: EndBug/version-check@v1.0.0
-      id: versioncheck
     - name: Version update detected
       if: steps.versioncheck.outputs.changed == 'true'
-      run: 'echo "Version change! -> ${{ steps.check.outputs.type }}"'
+      run: 'echo "Version change! -> ${{ steps.versioncheck.outputs.type }}"'
     - name: Set up Node.js for NPM
       if: steps.versioncheck.outputs.changed == 'true'
       uses: actions/setup-node@v1.2.0
