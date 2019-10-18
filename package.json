@@ -1,6 +1,6 @@
 {
   "name": "@sergeyzwezdin/pixelgrid",
-  "version": "0.2.5-alpha.2",
+  "version": "0.2.6",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
