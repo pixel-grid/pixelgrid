@@ -34,8 +34,8 @@ jobs:
         CI: true
     - name: Publish on NPM
       run: |
-        npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
         npm publish || true
       env:
         CI: true
-        NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
