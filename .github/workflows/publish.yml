@@ -32,6 +32,10 @@ jobs:
       run: yarn test --coverage
       env:
         CI: true
+    - uses: actions/upload-artifact@master
+      with:
+        name: package
+        path: dist/
     - name: Publish on NPM
       run: |
         echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
