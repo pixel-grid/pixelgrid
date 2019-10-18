@@ -5,5 +5,5 @@ cache:
   yarn: true
 script:
   - yarn lint
-  - yarn test
+  - yarn test --coverage
   - yarn build
