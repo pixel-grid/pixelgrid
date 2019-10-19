@@ -69,3 +69,6 @@ If you want to help with development, feel free to create Pull Request for your 
 ## License
 
 PixelGrid is released under the [MIT License](https://raw.githubusercontent.com/pixel-grid/pixelgrid/master/LICENSE).
+
+
+
