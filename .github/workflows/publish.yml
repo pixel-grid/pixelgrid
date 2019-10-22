@@ -23,21 +23,21 @@ jobs:
         file-name: package.json
         diff-search: true
     - name: Use Node.js ${{ matrix.node-version }}
-      # if: steps.check.outputs.changed == 'true'
+      if: steps.check.outputs.changed == 'true'
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-      # if: steps.check.outputs.changed == 'true'
+      if: steps.check.outputs.changed == 'true'
       run: npm ci
     - name: Lint
-      # if: steps.check.outputs.changed == 'true'
+      if: steps.check.outputs.changed == 'true'
       run: npm run lint
     - name: Build
-      # if: steps.check.outputs.changed == 'true'
+      if: steps.check.outputs.changed == 'true'
       run: npm run build
     - name: Run tests
-      # if: steps.check.outputs.changed == 'true'
+      if: steps.check.outputs.changed == 'true'
       run: npm run test
     - name: Publish package to NPM
       if: steps.check.outputs.changed == 'true'
@@ -47,9 +47,8 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     - name: Publish package to GPR
-#      if: steps.check.outputs.changed == 'true'
+      if: steps.check.outputs.changed == 'true'
       run: |
-        ls
         sed -i 's/@sergeyzwezdin/@pixel-grid/g' ./package.json
         npm config set registry https://npm.pkg.github.com/
         npm config set //npm.pkg.github.com/:_authToken=$GITHUB_AUTH_TOKEN
