@@ -51,7 +51,7 @@ jobs:
       run: |
         echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN > .npmrc
         cat .npmrc
-        ls
+        ls -a
         npm publish
 #        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
       env:
