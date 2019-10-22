@@ -46,4 +46,11 @@ jobs:
         npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    - name: Publish package to GPR
+#      if: steps.check.outputs.changed == 'true'
+      run: |
+        npm config set //npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_AUTH_TOKEN }}
 
