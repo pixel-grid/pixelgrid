@@ -49,11 +49,10 @@ jobs:
     - name: Publish package to NPM
       # if: steps.check.outputs.changed == 'true'
       run: |
-        echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN > .npmrc
+        echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         cat .npmrc
         ls -a
-        npm set registry "https://registry.npmjs.org"
-        npm set https://registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
+        npm whoami
         npm publish
 #        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
       env:
