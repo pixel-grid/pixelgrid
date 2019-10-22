@@ -48,7 +48,9 @@ jobs:
         registry-url: '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
     - name: Publish package to NPM
       # if: steps.check.outputs.changed == 'true'
-      run: npm publish
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+        npm run trypublish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
