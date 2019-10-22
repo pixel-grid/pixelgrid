@@ -50,7 +50,7 @@ jobs:
 #      if: steps.check.outputs.changed == 'true'
       run: |
         npm config set registry https://npm.pkg.github.com/
-        npm config set @sergeyzwezdin://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
+        npm config set @sergeyzwezdin:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN
         npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_AUTH_TOKEN }}
