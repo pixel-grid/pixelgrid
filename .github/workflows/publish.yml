@@ -37,7 +37,7 @@ jobs:
       run: npm run build
     - name: Run tests
       if: steps.check.outputs.changed == 'true'
-      run: npm run test --coverage
+      run: npm run test
     - name: Upload artifacts
       if: steps.check.outputs.changed == 'true'
       uses: actions/upload-artifact@master
