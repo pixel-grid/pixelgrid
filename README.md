@@ -3,7 +3,7 @@
 Official website: <a href="https://pixelgrid.zwezdin.com">https://pixelgrid.zwezdin.com</a>
 
 
-[![Build Status](https://travis-ci.org/pixel-grid/pixelgrid.svg?branch=master)](https://travis-ci.org/pixel-grid/pixelgrid)
+[![Build Status](https://github.com/pixel-grid/pixelgrid/workflows/Build/badge.svg?branch=master)](https://github.com/pixel-grid/pixelgrid/actions?workflow=Build)
 [![NPM](https://img.shields.io/npm/dy/@sergeyzwezdin/pixelgrid?label=NPM%20downloads&logo=npm)](https://www.npmjs.com/package/@sergeyzwezdin/pixelgrid)
 
 The tool to overlap your website layout with a grid. It’s available for the most popular browser and as an npm package.
