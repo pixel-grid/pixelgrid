@@ -50,6 +50,7 @@ jobs:
 #      if: steps.check.outputs.changed == 'true'
       run: |
         sed 's/@sergeyzwezdin/@pixel-grid/g' < package.json > package.json
+        cat package.json
         npm config set registry https://npm.pkg.github.com/
         npm config set //npm.pkg.github.com/:_authToken=$GITHUB_AUTH_TOKEN
         npm publish
