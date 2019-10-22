@@ -30,24 +30,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       if: steps.check.outputs.changed == 'true'
-      run: yarn install
-      env:
-        CI: true
+      run: npm ci
     - name: Lint
       if: steps.check.outputs.changed == 'true'
-      run: yarn lint
-      env:
-        CI: true
+      run: npm run lint
     - name: Build
       if: steps.check.outputs.changed == 'true'
-      run: yarn build
-      env:
-        CI: true
+      run: npm run build
     - name: Run tests
       if: steps.check.outputs.changed == 'true'
-      run: yarn test --coverage
-      env:
-        CI: true
+      run: npm run test --coverage
     - name: Upload artifacts
       if: steps.check.outputs.changed == 'true'
       uses: actions/upload-artifact@master
