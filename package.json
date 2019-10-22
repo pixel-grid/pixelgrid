@@ -6,7 +6,7 @@
   "types": "dist/index.d.js",
   "scripts": {
     "build": "tsc",
-    "prepublish": "tsc",
+    "prepublishOnly": "tsc",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
     "test": "jest",
     "lint": "tslint -c ./tslint.json './src/**/*.ts*'"
