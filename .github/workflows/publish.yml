@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    name: Build
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -49,6 +51,8 @@ jobs:
 #        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
   publish_npm:
+    name: Publish NPM
+
     needs: build
 
     runs-on: ubuntu-latest
@@ -58,4 +62,14 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - run: ls
+    - name: Checkout repository
+      uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 12.0.0
+    - name: Publish
+      uses: pascalgn/npm-publish-action@51fdb4531e99aac1873764ef7271af448dc42ab4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
