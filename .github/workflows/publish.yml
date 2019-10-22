@@ -1,10 +1,12 @@
 name: Publish on NPM
-on: [push]
+on:
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
 
-    if: contains(github.ref, 'master')
     runs-on: ubuntu-latest
 
     strategy:
