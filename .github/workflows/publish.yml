@@ -52,7 +52,6 @@ jobs:
         echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN > .npmrc
         cat .npmrc
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        npm whoami
         npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
