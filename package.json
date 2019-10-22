@@ -14,7 +14,7 @@
   "author": "Sergey Zwezdin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pixel-grid/pixelgrid.git"
+    "url": "https://github.com/sergeyzwezdin/pixelgrid.git"
   },
   "license": "MIT",
   "devDependencies": {
