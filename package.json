@@ -1,5 +1,5 @@
 {
-  "name": "@sergeyzwezdin/pixelgrid",
+  "name": "@pixel-grid/pixelgrid",
   "version": "0.2.10",
   "description": "",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   "author": "Sergey Zwezdin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sergeyzwezdin/pixelgrid.git"
+    "url": "https://github.com/pixel-grid/pixelgrid.git"
   },
   "license": "MIT",
   "devDependencies": {
