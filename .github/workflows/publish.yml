@@ -42,11 +42,11 @@ jobs:
       uses: actions/setup-node@v1.2.0
       with:
         registry-url: 'https://registry.npmjs.org'
-    - name: Publish package to NPM
-      # if: steps.check.outputs.changed == 'true'
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+#    - name: Publish package to NPM
+#      # if: steps.check.outputs.changed == 'true'
+#      run: npm publish
+#      env:
+#        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
   publish_npm:
     needs: build
