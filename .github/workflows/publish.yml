@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -21,8 +21,6 @@ jobs:
       with:
         file-name: package.json
         diff-search: true
-    - name: Version update detected
-      run: 'echo "Version change! -> ${{ steps.check }}"'
     - name: Use Node.js ${{ matrix.node-version }}
       if: steps.check.outputs.changed == 'true'
       uses: actions/setup-node@v1
@@ -45,7 +43,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: package
-        path: dist/
+        path: .
     - name: Set up Node.js for NPM
       if: steps.check.outputs.changed == 'true'
       uses: actions/setup-node@v1.2.0
