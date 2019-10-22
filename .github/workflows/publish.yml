@@ -39,16 +39,17 @@ jobs:
     - name: Run tests
       # if: steps.check.outputs.changed == 'true'
       run: npm run test
-    - name: Set up Node.js for NPM
-      # if: steps.check.outputs.changed == 'true'
-      uses: actions/setup-node@v1.2.0
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      with:
-        registry-url: '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
+ #   - name: Set up Node.js for NPM
+ #     # if: steps.check.outputs.changed == 'true'
+ #     uses: actions/setup-node@v1.2.0
+ #     env:
+ #       NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+ #     with:
+ #       registry-url: '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
     - name: Publish package to NPM
       # if: steps.check.outputs.changed == 'true'
       run: |
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm run publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
