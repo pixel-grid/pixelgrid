@@ -54,6 +54,10 @@ For the moment following browser extensions are supported:
 3. [Opera browser](https://addons.opera.com/ru/extensions/details/pixelgrid/)
 4. [Yandex browser](https://addons.opera.com/ru/extensions/details/pixelgrid/)
 
+Not supported for the moment:
+1. Edge - actually, the code of the extension is ready for Edge browser, but Microsoft doesn't allow to publish new extensions for the current version of Edge, since they are going to release Chromium-based version.
+2. Safari - Apple discontinued support of HTML/JS-based extensions for Safari, so, for now, need to re-build the extension to use [new API](https://developer.apple.com/safari/extensions/). One day I will have time for that and will re-build the extension to use [WKWebview](https://blog.yimingliu.com/2018/11/14/notes-on-porting-a-safari-extension-to-a-safari-app-extension/).
+
 ## Documentation
 
 1. [Getting started](https://github.com/pixel-grid/pixelgrid/wiki/Getting-started)
