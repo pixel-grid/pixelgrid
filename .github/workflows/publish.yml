@@ -32,7 +32,9 @@ jobs:
       run: npm ci
     - name: Lint
       if: steps.check.outputs.changed == 'true'
-      run: npm run lint
+      run: |
+        npm run format-check
+        npm run lint
     - name: Build
       if: steps.check.outputs.changed == 'true'
       run: npm run build
