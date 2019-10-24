@@ -4,9 +4,7 @@ import getDocumentHeight from '../helpers/getDocumentHeight';
  * Invalidate grid element height
  * @param element Grid's root element
  */
-const invalidateGridHeight: (element: HTMLElement) => HTMLElement = (
-    element: HTMLElement
-) => {
+const invalidateGridHeight: (element: HTMLElement) => HTMLElement = (element: HTMLElement) => {
     // Hide grid before measuring document height
     element.style.display = 'none';
 

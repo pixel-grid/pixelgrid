@@ -4,10 +4,7 @@ import { BuildLayoutOptions } from '../grid.interfaces';
  * Create empty div element and append it to the end of the body
  * @param id Element's identifier
  */
-const buildRootElement: (
-    id: string,
-    options: BuildLayoutOptions
-) => HTMLElement = (id, options) => {
+const buildRootElement: (id: string, options: BuildLayoutOptions) => HTMLElement = (id, options) => {
     const result = document.createElement('div');
 
     result.id = id;

@@ -1,6 +1,4 @@
-const subscribeWindowResize: (onResize: () => void) => () => void = (
-    onResize
-) => {
+const subscribeWindowResize: (onResize: () => void) => () => void = (onResize) => {
     let running = false;
 
     const handler: () => void = () => {
